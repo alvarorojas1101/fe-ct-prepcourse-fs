@@ -5,11 +5,8 @@ function obtenerMayor(x, y) {
   // Retornar el número más grande.
   // Si son iguales, retornar cualquiera de los dos.
   // Tu código:
-  if (x > y) {
-    return x;
-  } else if (x < y) {
-    return y;
-  } else x || y;
+  if (x > y) return x;
+  return y;
 }
 
 function mayoriaDeEdad(edad) {
@@ -17,11 +14,8 @@ function mayoriaDeEdad(edad) {
   // Si tiene 18 años ó más debe retornar el string: "Allowed".
   // Caso contrario: "Not allowed".
   // Tu código:
-  if (edad >= 18) {
-    return "Allowed";
-  } else {
-    return "Not allowed";
-  }
+  if (edad >= 18) return "Allowed";
+  return "Not allowed";
 }
 
 function conection(status) {
@@ -31,12 +25,18 @@ function conection(status) {
   // De lo contrario, presumimos que el usuario está "Offline".
   // Retornar el estado de conexión del usuario.
   // Tu código:
-  if (status === 1) {
-    return "online";
-  } else if (status === 2) {
-    return "Away";
-  } else {
-    return "Offline";
+
+  /*  if (status === 1) return "Online";
+ else if (status === 2 ) return "Away";
+ return "Offline";*/
+
+  switch (status) {
+    case 1:
+      return "Online";
+    case 2:
+      return "Away";
+    default:
+      return "Offline";
   }
 }
 
@@ -47,14 +47,15 @@ function saludo(idioma) {
   // Si "idioma" es "ingles", devuelve "Hello!".
   // Si "idioma" no es ninguno de los anteriores o es `undefined` devuelve "Hola!".
   // Tu código:
-  if (idioma === "aleman") {
-    return "Guten tag!";
-  } else if (idioma === "mandarin") {
-    return "NI Hao!";
-  } else if (idioma === "ingles") {
-    return "Hello!";
-  } else {
-    return "Hola!";
+  switch (idioma) {
+    case "aleman":
+      return "Guten Tag!";
+    case "mandarin":
+      return "Ni Hao!";
+    case "ingles":
+      return "Hello!";
+    default:
+      return "Hola!";
   }
 }
 
@@ -85,23 +86,19 @@ function esDiezOCinco(num) {
   // Retornar true si "num" es 10 o 5.
   // De lo contrario, retornar false.
   // Tu código:
-  if (num === 10 || num === 5) {
-    return true;
-  } else {
-    return false;
-  }
+  return num === 10 || num === 5 ? true : false;
 }
 
 function estaEnRango(num) {
   // Retornar true si "num" es menor que 50 y mayor que 20.
   // De lo contrario, retornar false.
   // Tu código:
-  if (num < 50 && num > 20) {
-    return true;
-  } else {
-    return false;
-  }
+  if (num < 50 && num > 20) return true;
+  return false;
 }
+
+//Operador ternario
+/* num < 50 && num < 20  ? true:false; */
 
 function esEntero(num) {
   // Retornar true si "num" es un entero, ya sea positivo, negativo o cero.
@@ -110,11 +107,8 @@ function esEntero(num) {
   // Ejemplo: (-10) ---> true
   // De lo contrario, retorna false.
   // Tu código:
-  if (num % 1 === 0) {
-    return true;
-  } else {
-    return false;
-  }
+  if (num % 1 === 0) return true;
+  return false;
 }
 
 function fizzBuzz(num) {
@@ -147,7 +141,7 @@ function operadoresLogicos(num1, num2, num3) {
   } else if (num1 < 0 || num2 < 0 || num3 < 0) {
     return "Hay negativos";
   } else if (num3 > num1 && num3 > num2) {
-    return num3 + 1;
+    return ++num3;
   } else if (num1 === 0 && num2 === 0 && num3 === 0) {
     return "Error";
   } else {
@@ -162,12 +156,7 @@ function esPrimo(num) {
   // [Pista 2]: puedes resolverlo utilizando un `bucle for`.
   // [Nota]: los números negativos, 0 y 1 NO son números primos.
   // Tu código:
-  if (num < 2) {
-    return false;
-  }
-  if (num === 2) {
-    return true;
-  }
+  if (num <= 1) return false;
   for (let i = 2; i < num; i++) {
     if (num % i === 0) {
       return false;
@@ -180,11 +169,8 @@ function esVerdadero(valor) {
   // Si "valor" es verdadero retornar "Soy verdadero".
   // Caso contrario, retornar "Soy falso".
   // Tu código:
-  if (valor === true) {
-    return "Soy verdadero";
-  } else {
-    return "Soy falso";
-  }
+  if (valor === true) return "Soy verdadero";
+  return "Soy falso";
 }
 
 function tieneTresDigitos(num) {
@@ -196,6 +182,9 @@ function tieneTresDigitos(num) {
   } else {
     return false;
   }
+
+  // primero combierte el numero en string y si la longitud es igual a 3 da true
+  /* return num.toString() .length ===3 ? true : false; */
 }
 
 function doWhile(num) {
@@ -204,13 +193,11 @@ function doWhile(num) {
   // Utilizar el bucle Do-While.
   // Tu código:
   let i = 0;
-  let a = num;
-
   do {
-    i = i + 1;
-    a = a + 5;
+    num = num + 5;
+    i++;
   } while (i < 8);
-  return a;
+  return num;
 }
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/
